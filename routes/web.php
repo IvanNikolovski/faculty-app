@@ -47,4 +47,9 @@ Route::group(['prefix'=>'students'], function (){
             'as' => 'students-update',
             'uses' => 'StudentsController@update'
         ]);
+    Route::post('/delete/{id}',
+        [
+            'as' => 'students-delete',
+            'uses' => 'StudentsController@destroy'
+        ]);
 });

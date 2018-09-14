@@ -26,6 +26,13 @@
 
             <button type="submit" class="btn btn-primary">Update</button>
         </form>
+        <hr>
+        <form action="{{ route('students-delete', ['id'=> $student->id]) }}" method="post">
+            {{ csrf_field() }}
+
+            <button type="submit" class="btn btn-danger">Update</button>
+
+        </form>
     </div>
 @endsection
 
