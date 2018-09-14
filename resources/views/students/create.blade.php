@@ -24,7 +24,7 @@
                <input type="number" class="form-control" minlength="13" name="EMBG">
            </div>
 
-           <button type="submit" class="btn btn-primary">Submit</button>
+           <button type="submit" class="btn btn-primary">@lang('students.submit')</button>
        </form>
    </div>
 @endsection

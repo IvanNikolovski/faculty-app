@@ -6,4 +6,7 @@ return [
     'surname' => 'Surname',
     'date_of_birth' => 'Date of birth',
     'unique_id_number' => 'ЕМБГ',
+    'submit' => 'Submit',
+    'delete' => 'Delete',
+    'update' => 'Update',
 ];

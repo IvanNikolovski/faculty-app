@@ -28,10 +28,13 @@ Route::get('locale/{locale}', function ($locale) {
 
 
 Route::view('/hello', 'hello');
-
+          //ROUTES FOR STUDENTS
 
 Route::group(['prefix'=>'students'], function (){
-    Route::get('/create', 'StudentsController@create');
+    Route::get('/create', [
+        'as' => 'students-create',
+        'uses' => 'StudentsController@create'
+    ]);
     Route::post('/store',
     [
         'as' => 'students-store',
@@ -52,4 +55,33 @@ Route::group(['prefix'=>'students'], function (){
             'as' => 'students-delete',
             'uses' => 'StudentsController@destroy'
         ]);
+});
+
+                //ROUTES FOR COURSES
+Route::group(['prefix'=>'courses'], function (){
+
+    Route::get('/create', [
+        'as' => 'courses-create',
+        'uses' => 'CoursesController@create'
+    ]);
+    Route::post('/store',
+        [
+            'as' => 'courses-store',
+            'uses' => 'CoursesController@store'
+        ]);
+//    Route::get('/edit/{id}',
+//        [
+//            'as' => 'courses-edit',
+//            'uses' => 'CoursesController@edit'
+//        ]);
+//    Route::post('/update/{id}',
+//        [
+//            'as' => 'courses-update',
+//            'uses' => 'CoursesController@update'
+//        ]);
+//    Route::post('/delete/{id}',
+//        [
+//            'as' => 'courses-delete',
+//            'uses' => 'CoursesController@destroy'
+//        ]);
 });
