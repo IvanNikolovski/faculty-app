@@ -1,39 +1,28 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Traits;
 
 use App\Student;
-use App\Traits\Students;
 use Illuminate\Http\Request;
 
-class StudentsController extends Controller
-{
-    use Students;
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
-    public function create()
-    {
-        return view('students.create');
-    }
-
-    /**
+trait Students {
+   /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    private function storeStudent(Request $request)
     {
-        $this->storeStudent($request);
-        return redirect('/');
+
+        $student = new Student;
+        $student->name = $request->name;
+        $student->surname = $request->surname;
+        $student->DOB = $request->DOB;
+        $student->EMBG = $request->EMBG;
+
+        $student->save();
+
     }
 
     /**
@@ -42,7 +31,7 @@ class StudentsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    private function showStudent($id)
     {
         //
     }
@@ -53,10 +42,10 @@ class StudentsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    private function getStudent($id)
     {
-        $student = $this->getStudent($id);
-        return view('students.edit', compact('student'));
+        $student = Student::find($id);
+        return $student;
     }
 
     /**
@@ -66,11 +55,16 @@ class StudentsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    private function updateStudent(Request $request, $id)
     {
-       $this->updateStudent($request, $id);
+        $students = Student::find($id);
+        $students->name = $request->name;
+        $students->surname = $request->surname;
+        $students->DOB = $request->DOB;
+        $students->EMBG = $request->EMBG;
 
-        return redirect('/');
+        $students->save();
+
     }
 
     /**
@@ -79,12 +73,11 @@ class StudentsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function delete($id)
     {
-       $this->delete($id);
+        Student::find($id)->delete();
 
-        return redirect('/');
+
     }
-
-
 }
+

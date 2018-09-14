@@ -30,7 +30,7 @@
         <form action="{{ route('students-delete', ['id'=> $student->id]) }}" method="post">
             {{ csrf_field() }}
 
-            <button type="submit" class="btn btn-danger">Update</button>
+            <button type="submit" class="btn btn-danger">Delete</button>
 
         </form>
     </div>
