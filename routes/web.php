@@ -26,7 +26,9 @@ Route::get('locale/{locale}', function ($locale) {
 });
 
 
+
 Route::view('/hello', 'hello');
+
 
 Route::group(['prefix'=>'students'], function (){
     Route::get('/create', 'StudentsController@create');
